@@ -1,0 +1,33 @@
+# Maven
+target/
+*.jar
+*.war
+*.nar
+*.ear
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.vscode/
+
+# Compiled files
+*.class
+
+# Log files
+*.log
+
+# Package files
+hs_err_pid*
+
+# Mac OS
+.DS_Store

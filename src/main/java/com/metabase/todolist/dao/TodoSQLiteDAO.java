@@ -2,8 +2,6 @@ package com.metabase.todolist.dao;
 
 import com.metabase.todolist.model.Todo;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -70,16 +68,5 @@ public class TodoSQLiteDAO {
     public void delete(Long id) {
         String sql = "DELETE FROM todos WHERE id = ?";
         dataAccess.execute(sql, id);
-    }
-
-    private Todo mapResultSetToTodo(ResultSet rs) throws SQLException {
-        Todo todo = new Todo();
-        todo.setId(rs.getLong("id"));
-        todo.setTitle(rs.getString("title"));
-        todo.setDescription(rs.getString("description"));
-        todo.setCompleted(rs.getBoolean("completed"));
-        todo.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
-        todo.setUpdatedAt(rs.getTimestamp("updated_at").toLocalDateTime());
-        return todo;
     }
 }

@@ -1,12 +1,8 @@
 package com.metabase.todolist.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.metabase.todolist.model.Todo;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +11,6 @@ public class TodoControllerIntegrationTest {
 
     private static final int PORT = 8080;
     private final TestRestTemplate restTemplate = new TestRestTemplate();
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private String getRootUrl() {
         return "http://localhost:" + PORT + "/api/todos";

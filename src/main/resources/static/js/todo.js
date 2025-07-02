@@ -12,9 +12,7 @@ const editTodoModal = document.getElementById('editTodoModal');
 async function fetchTodos() {
     try {
         const response = await fetch(API_BASE_URL, {
-            headers: {
-//                'arex-force-record': 'true'
-            }
+            headers: {}
         });
         const todos = await response.json();
         renderTodos(todos);
@@ -99,8 +97,7 @@ addTodoForm.addEventListener('submit', async (e) => {
         const response = await fetch(`${API_BASE_URL}/create`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'arex-force-record': 'true'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: `title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
         });
@@ -127,8 +124,7 @@ async function toggleTodoStatus(id, completed) {
         const response = await fetch(`${API_BASE_URL}/update/${id}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'arex-force-record': 'true'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: `title=${encodeURIComponent(todo.title)}&description=${encodeURIComponent(todo.description)}&completed=${todo.completed}`
         });
@@ -147,11 +143,7 @@ async function toggleTodoStatus(id, completed) {
 // 获取单个Todo
 async function getTodoById(id) {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
-            headers: {
-                'arex-force-record': 'true'
-            }
-        });
+        const response = await fetch(`${API_BASE_URL}/${id}`, {});
         if (!response.ok) return null;
         return await response.json();
     } catch (error) {
@@ -189,8 +181,7 @@ document.getElementById('saveTodoEdit').addEventListener('click', async () => {
         const response = await fetch(`${API_BASE_URL}/update/${id}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'arex-force-record': 'true'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: `title=${encodeURIComponent(todo.title)}&description=${encodeURIComponent(todo.description)}&completed=${todo.completed}`
         });
@@ -213,10 +204,7 @@ async function deleteTodo(id) {
 
     try {
         const response = await fetch(`${API_BASE_URL}/delete?id=${id}`, {
-            method: 'POST',
-            headers: {
-                'arex-force-record': 'true'
-            }
+            method: 'POST'
         });
 
         if (response.ok) {
